@@ -2,7 +2,8 @@
  * react-native-swiper
  * @author leecade<leecade@163.com>
  */
-import React, {
+import React from 'react';
+import {
   StyleSheet,
   Text,
   View,
@@ -11,7 +12,7 @@ import React, {
   TouchableOpacity,
   ViewPagerAndroid,
   Platform
-} from 'react-native'
+} from 'react-native';
 
 // Using bare setTimeout, setInterval, setImmediate
 // and requestAnimationFrame calls is very dangerous
@@ -309,7 +310,7 @@ module.exports = React.createClass({
    * Scroll by index
    * @param  {number} index offset index
    */
-  scrollTo(index) {    
+  scrollTo(index) {
     if (this.state.isScrolling || this.state.total < 2) return
     let state = this.state
     let diff = (this.props.loop ? 1 : 0) + index + this.state.index
@@ -317,7 +318,7 @@ module.exports = React.createClass({
     let y = 0
     if(state.dir == 'x') x = diff * state.width
     if(state.dir == 'y') y = diff * state.height
-      
+
     if (Platform.OS === 'android') {
       this.refs.scrollView && this.refs.scrollView.setPage(diff)
     } else {
@@ -332,7 +333,7 @@ module.exports = React.createClass({
       isScrolling: true,
       autoplayEnd: false,
     })
-    
+
     // trigger onScrollEnd manually in android
     if (Platform.OS === 'android') {
       this.setTimeout(() => {
